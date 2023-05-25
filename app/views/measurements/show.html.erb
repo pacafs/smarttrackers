@@ -1,0 +1,17 @@
+<h1>Measurement: <%= @measurement.id %></h1>
+  <table>
+    <tr>
+      <th>Amount</th>
+    </tr>
+    <tr>
+      <td><%= @measurement.amount %></td>
+    </tr>
+  </table>
+
+
+  <%= link_to 'Back to PowerGauge', gauge_path(id: @measurement.power_gauge_id), class: 'btn btn-primary mt-4' %>
+
+  <% if current_user.is_manager? %>
+    <%= link_to 'Review', new_gauge_measurement_review_path(measurement_id: @measurement.id), class: 'btn btn-primary mt-4' %>
+  <% end %>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+  <h1 class="mt-4 mb-4"><%= @power_gauge.name %></h1>
+
+  <dl class="row">
+    <dt class="col-sm-3">Name</dt>
+    <dd class="col-sm-9"><%= @power_gauge.name %></dd>
+
+    <dt class="col-sm-3">Start Date</dt>
+    <dd class="col-sm-9"><%= @power_gauge.start_date %></dd>
+
+    <dt class="col-sm-3">End Date</dt>
+    <dd class="col-sm-9"><%= @power_gauge.end_date %></dd>
+
+    <dt class="col-sm-3">Unit</dt>
+    <dd class="col-sm-9"><%= @power_gauge.unit %></dd>
+
+    <dt class="col-sm-3">Time Unit</dt>
+    <dd class="col-sm-9"><%= @power_gauge.time_unit %></dd>
+  </dl>
+  
+  <br>
+  <hr>
+  <br>
+
+  <h1>Measurements</h1>
+
+  <table>
+      <tr>
+      <% @power_gauge.measurements.each do |m| %>
+        <%= link_to "#{m.id}", gauge_measurement_path(id: m.id, gauge_id: m.power_gauge_id), class: 'btn btn-primary mt-4' %>
+      <% end %>
+      </tr>
+      <tr>
+      <% @power_gauge.measurements.each do |m| %>
+          <td><%= m.amount %></td>  
+      <% end %>
+      </tr>
+  </table>
+
+
+  <%= link_to 'Back to Power Gauges', gauges_path, class: 'btn btn-primary mt-4' %>
+</div>

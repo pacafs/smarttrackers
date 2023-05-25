@@ -1,0 +1,35 @@
+<div class="container">
+  <h1 class="mt-4 mb-4">Power Gauges</h1>
+  
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">End Date</th>
+        <th scope="col">Unit</th>
+        <th scope="col">Time Unit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @power_gauges.each do |power_gauge| %>
+        <tr>
+          <th scope="row"><%= power_gauge.id %></th>
+          <td>
+            <%= link_to gauge_path(power_gauge.id) do %>
+                <p><%= power_gauge.name %><p>
+            <% end %>
+          </td>
+          <td><%= power_gauge.start_date %></td>
+          <td><%= power_gauge.end_date %></td>
+          <td><%= power_gauge.unit %></td>
+          <td><%= power_gauge.time_unit %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+</div>
+

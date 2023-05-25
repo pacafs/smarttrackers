@@ -1,0 +1,34 @@
+<div class="container">
+  <%= form_for @gauge, url: gauges_path, html: {class: "row g-3"} do |f| %>
+
+    <div class="col-12">
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.label :start_date, class: "form-label" %>
+      <%= f.date_field :start_date, class: "form-control" %>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.label :end_date, class: "form-label" %>
+      <%= f.date_field :end_date, class: "form-control" %>
+    </div>
+
+    <div class="col-12">
+      <%= f.label :unit, class: "form-label" %>
+      <%= f.text_field :unit, class: "form-control" %>
+    </div>
+
+    <div class="col-12">
+      <%= f.label :time_unit, class: "form-label" %>
+      <%= f.select :time_unit, options_for_select(['days', 'weeks', 'months', 'years']), {}, {class: "form-select"} %>
+    </div>
+
+    <div class="col-12">
+      <%= f.submit "Create Gauge", class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+</div>
