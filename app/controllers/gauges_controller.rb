@@ -1,4 +1,5 @@
 class GaugesController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_power_gauge, only: [:show]
 
     def index

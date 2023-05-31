@@ -1,10 +1,11 @@
+<br />
 <div class="d-flex justify-content-center align-items-center vh-100">
   <div class="card">
     <div class="card-body">
       <%= form_for [@gauge, @measurement], url: gauge_measurements_path, html: { class: 'mx-auto' } do |f| %>
         <div class="form-group">
-          <%= f.label :value, "Enter reading in #{@gauge.time_unit}", class: 'control-label' %>
-          <%= f.number_field :amount, class: 'form-control' %>
+          <%= f.label :amount, "Enter reading", class: 'control-label' %>
+          <%= f.number_field :amount, step: 'any', class: 'form-control' %>
         </div>
 
         <%= f.submit "Create Measurement", class: 'btn btn-primary' %>

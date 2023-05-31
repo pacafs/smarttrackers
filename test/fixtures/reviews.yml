@@ -1,0 +1,6 @@
+first_review:
+  status: "Pending"
+  user: manager
+  measurement: first_measurement
+  created_at: <%= Time.current %>
+  updated_at: <%= Time.current %>

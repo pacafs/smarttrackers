@@ -1,5 +1,6 @@
 # app/controllers/reviews_controller.rb
 class ReviewsController < ApplicationController
+    before_action :authenticate_user!
     load_and_authorize_resource
     before_action :set_power_gauge, :set_measurement
 
@@ -12,7 +13,7 @@ class ReviewsController < ApplicationController
       @review.user = current_user
       
       if @review.save
-        redirect_to gauge_measurements_path
+        redirect_to gauge_path(@power_gauge)
       else
         render 'new'
       end

@@ -1,12 +1,24 @@
-<div class="container">
-  <h1 class="mt-4 mb-4"><%= @gauge.name %></h1>
-   
-   <% @measurements.each do |m| %>
-        <%= link_to gauge_measurement_path(id: m.id) do %>
-            <p>Measurement: <%= m.id %> - <%= m.amount %></p>
-        <% end %>
-   <% end %>
 
-    <%= link_to 'Back to Power Gauges', gauges_path, class: 'btn btn-primary mt-4' %>
-    
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="card mt-5 mb-4 shadow-lg">
+        <div class="card-header bg-primary text-white text-center">
+          <h2 class="mb-0"><%= @gauge.name %></h2>
+        </div>
+        <div class="card-body">
+          <% @measurements.each do |m| %>
+            <%= link_to gauge_measurement_path(id: m.id), class: 'list-group-item list-group-item-action' do %>
+              <h5 class="mb-0">Measurement: <%= m.id %> - <%= m.amount %></h5>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="card-footer text-center">
+          <%= link_to 'Back to Power Gauges', gauges_path, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+

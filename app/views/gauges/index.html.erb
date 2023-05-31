@@ -1,4 +1,5 @@
 <div class="container">
+
   <h1 class="mt-4 mb-4">Power Gauges</h1>
   
   <table class="table table-striped">
@@ -30,6 +31,10 @@
     </tbody>
   </table>
 
+  <% if !current_user.is_manager? %>
+    <%= link_to 'Add New Gauge', new_gauge_path(), class: 'btn btn-primary mt-4' %>
+  <% end %>
 
 </div>
+
 

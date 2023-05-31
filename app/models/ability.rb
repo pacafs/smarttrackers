@@ -7,12 +7,15 @@ class Ability
 
     if user.role == 'Editor'
       can :manage, PowerGauge, user_id: user.id
+      can :manage, Measurement
     else
       can :read, PowerGauge
+      can :read, Review
     end
 
     if user.role == 'Manager'
       can :manage, Review
+      can :read, Measurement
     end
   end
 end

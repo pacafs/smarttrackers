@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_210646) do
 
   create_table "measurements", force: :cascade do |t|
     t.float "amount"
+    t.boolean "approved"
     t.bigint "power_gauge_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -228,7 +229,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_22_210646) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "status"
+    t.string "status", default: "Pending"
     t.bigint "user_id", null: false
     t.bigint "measurement_id", null: false
     t.datetime "created_at", null: false

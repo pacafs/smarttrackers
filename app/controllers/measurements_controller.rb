@@ -1,6 +1,8 @@
 class MeasurementsController < ApplicationController
+    before_action :authenticate_user!
+    load_and_authorize_resource
     before_action :set_power_gauge
-    before_action :set_measurement, only: :show
+    before_action :set_measurement, only: [:show, :edit, :update]
 
     def index
       @measurements = @gauge.measurements.all
@@ -10,18 +12,37 @@ class MeasurementsController < ApplicationController
       @measurement = @gauge.measurements.new
     end
 
-    def show
+    def show  
     end
-  
+
+    def edit
+      if @measurement.review
+        redirect_to gauge_url(@gauge) if @measurement.review.status == "Approved"
+      else  
+        redirect_to gauge_url(@gauge)
+      end
+    end
+
+    def update
+      if @measurement.update(measurement_params)
+        @measurement.review.update(status: "Pending")
+        redirect_to gauge_url(@gauge)
+      else
+        render :edit
+      end
+    end
+
     def create
-      @measurement = @gauge.measurements.new(measurement_params)
+      @measurement = @gauge.measurements.create(measurement_params)
       if @measurement.save
-        redirect_to new_gauge_url
+        redirect_to gauge_url(@gauge)
       else
         render :new
       end
     end
   
+    
+    
     private
   
     def measurement_params

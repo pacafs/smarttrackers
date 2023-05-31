@@ -4,6 +4,5 @@
     <%= f.label :status %>
     <%= f.select :status, [['Pending', 'Pending'], ['Approved', "Approved"], ['Rejected', "Rejected"]], {}, {class: 'form-control'} %>
   </div>
-  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.submit class: 'btn btn-primary mt-3' %>
 <% end %>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :gauges do
-    resources :measurements, only: [:new, :create, :index, :show] do
+    resources :measurements do
       resource :review, only: [:new, :create]
     end
   end

@@ -1,0 +1,13 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="card">
+    <div class="card-body">
+      <%= form_for [@gauge, @measurement], url: gauge_measurement_path, html: { class: 'mx-auto' } do |f| %>
+        <div class="form-group">
+          <%= f.label :value, "Enter reading in #{@gauge.time_unit}", class: 'control-label' %>
+          <%= f.number_field :amount, class: 'form-control' %>
+        </div>
+        <%= f.submit "Update Measurement", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>
